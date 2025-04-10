@@ -25,7 +25,28 @@
 			- `-g` allows the CLI to install a package globally
 			- `@angular/cli` is the CLI that allows you to interact with Angular
 			- `ng serve` launches the server, watches files, and rebuilds the app when changes are made
-			- `--host 0.0.0.0` sets the default HTTP port 
+			- `--host 0.0.0.0` sets the default HTTP port
+- Dockerfile Usage
+	- A Dockerfile designates what will be added inside the application container when it is used.
+	- Requirements for proper Dockerfile usage
+		- `FROM` designates the type of image being used (in this case, it is node:18-bullseye)
+		- `WORKDIR` designates the working directory the container will be in
+		- `COPY` uses the location of the file chosen on the host, and then the directory where the contests on the host will be copied to
+		- `RUN` runs commands listed
+			- In this case, `npm install` and `npm install -g @angular/cli` are used
+		- `EXPOSE` exposes the port for the host machine
+		- `CMD` is used to create and run the angular application
+			- `ng serve --host 0.0.0.0` is the command being run
+	- To check if the container works properly, enter `http://localhost:XXXX` (the local host's port) in the URL on your browser. If the website populates, it's working
+- Docker Repos
+	- From Docker Hub's website, you are able to go to your "Repositories" and click the `Create a repository` button. Once done, you give the new repo a name, short description if you so choose, and whether it is public or private (only 1 private repo for free accounts).
+	- To create a Personal Access Token (PAT), you go to your account settings, click on `Personal access tokens` on the far left side of the screen, click `Generate new token`, and you are given options
+		- Access Token Description, choice of expiration date, and whether your key will allow read-only, read and write, or read, write, and delete.
+		- Once generated, you will login to your docker account from the CLI
+	- To authenticate, enter in the CLI `docker login -u *username*`, then where prompted for a password, enter in the token password Docker Hub gave you after creating your PAT
+	- To push the container to the repo, use the command `docker push your/repo/here:latest` to push the latest version of the container to the rep
+		- WARNING: Name the container exactly what the repo is called
+	- [Link to my Docker Hub](https://hub.docker.com/r/mjzimmer121999/zimmer-ceg3120)
 # How to Use Docker
 - Useful Tip:
 	- To stop a container: `docker stop *NAMES*`, with NAME denoting the name of the container
@@ -42,3 +63,5 @@
 	- It has many good explanations for the different flags 
 - [Bind Mounts](https://docs.docker.com/engine/storage/bind-mounts/)
 	- Explains the ways to bind mounts. In my case, it gave explanation to `-v` for volume options
+- [Writing a Dockerfile](https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker)
+	- Explained the necessary parameters required inside a Dockerfile for it to properly function
