@@ -1,6 +1,7 @@
 # Overview
 - 
-# How to Set Up Docker
+# The Beginning of Docker Usage
+## How to Set Up Docker
 - Installing Docker
 	- When using MacOS, you are able to go to [Docker Desktop](https://www.docker.com/products/docker-desktop/) and download it.
 	- Installing Node.js use: `docker pull node:18-bullseye`
@@ -47,14 +48,22 @@
 	- To push the container to the repo, use the command `docker push your/repo/here:latest` to push the latest version of the container to the rep
 		- WARNING: Name the container exactly what the repo is called
 	- [Link to my Docker Hub](https://hub.docker.com/r/mjzimmer121999/zimmer-ceg3120)
-# How to Use Docker
+## How to Use Docker
 - Useful Tip:
 	- To stop a container: `docker stop *NAMES*`, with NAME denoting the name of the container
 
-# Useful Tips I've Learned Along the Way
+## Useful Tips I've Learned Along the Way
 - When look at the `XXXX:XXXX`, the first is your machine and second is the docker container
 	- When creating new containers, the port being used for your machine must be different from other images, such as if 5000 exists, you must make a change to 5001
 - For my machine, I am unable to run an overloaded command to set up the container and install the `angular/cli` and `ng serve`. They must be done in two steps currently (as explained above in "Configuring a container")
+
+# Github Actions and Dockerhub
+- GitHub Repo Secrets
+	- 
+- CI with GitHub Actions
+	- 
+- How to Test and Validate
+	- 
 
 # Resources Found
 - [Help Understanding "sh -c" in Docker commands](https://docs.docker.com/reference/cli/docker/container/exec/)
