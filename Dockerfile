@@ -4,8 +4,6 @@ WORKDIR /tempApp
 
 COPY angular-site/wsu-hw-ng-main/. /tempApp
 
-# RUN docker pull node:18-bullseye
-
 RUN npm install
 RUN npm install -g @angular/cli
 
