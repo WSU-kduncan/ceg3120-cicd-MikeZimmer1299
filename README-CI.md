@@ -2,13 +2,13 @@
 - 
 # The Beginning of Docker Usage
 ## How to Set Up Docker
-- **Installing Docker
+- **Installing Docker**
 	- When using MacOS, you are able to go to [Docker Desktop](https://www.docker.com/products/docker-desktop/) and download it.
 	- Installing Node.js use: `docker pull node:18-bullseye`
 	- As an easy check to see if your Docker is able to run a container:
 		- Run the command `docker pull hello-world`
 		- Run the command `docker run hello-world` to check that your container can successful run. The output will be: "Hello from Docker!"
-- **Configuring a container
+- **Configuring a container**
 	- As of right now, I am running into issues running my command in one line, so it is broken up into two sections: in terminal and in the container
 	- In Terminal Command:
 		- `Docker run -it -p 5002:4200 -v ~/ceg3120-cicd-MikeZimmer1299/angular-site/wsu-hw-ng-main/.:/tempApp/ -w /tempApp node:18-bullseye sh`
@@ -27,7 +27,7 @@
 			- `@angular/cli` is the CLI that allows you to interact with Angular
 			- `ng serve` launches the server, watches files, and rebuilds the app when changes are made
 			- `--host 0.0.0.0` sets the default HTTP port
-- **Dockerfile Usage
+- **Dockerfile Usage**
 	- A Dockerfile designates what will be added inside the application container when it is used.
 	- Requirements for proper Dockerfile usage
 		- `FROM` designates the type of image being used (in this case, it is node:18-bullseye)
@@ -39,7 +39,7 @@
 		- `CMD` is used to create and run the angular application
 			- `ng serve --host 0.0.0.0` is the command being run
 	- To check if the container works properly, enter `http://localhost:XXXX` (the local host's port) in the URL on your browser. If the website populates, it's working
-- **Docker Repos
+- **Docker Repos**
 	- From Docker Hub's website, you are able to go to your "Repositories" and click the `Create a repository` button. Once done, you give the new repo a name, short description if you so choose, and whether it is public or private (only 1 private repo for free accounts).
 	- To create a Personal Access Token (PAT), you go to your account settings, click on `Personal access tokens` on the far left side of the screen, click `Generate new token`, and you are given options
 		- Access Token Description, choice of expiration date, and whether your key will allow read-only, read and write, or read, write, and delete.
@@ -58,11 +58,11 @@
 - For my machine, I am unable to run an overloaded command to set up the container and install the `angular/cli` and `ng serve`. They must be done in two steps currently (as explained above in "Configuring a container")
 
 # Github Actions and Dockerhub
-- GitHub Repo Secrets
+- **GitHub Repo Secrets**
 	- 
-- CI with GitHub Actions
+- **CI with GitHub Actions**
 	- 
-- How to Test and Validate
+- **How to Test and Validate**
 	- 
 
 # Resources Found
