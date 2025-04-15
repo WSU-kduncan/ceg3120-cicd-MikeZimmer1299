@@ -57,9 +57,12 @@
 	- When creating new containers, the port being used for your machine must be different from other images, such as if 5000 exists, you must make a change to 5001
 - For my machine, I am unable to run an overloaded command to set up the container and install the `angular/cli` and `ng serve`. They must be done in two steps currently (as explained above in "Configuring a container")
 
-# Github Actions and Dockerhub
+# Github Actions and Docker Hub
 - **GitHub Repo Secrets**
-	- 
+	- For Repo Secrets to work with Docker Hub, you will need a Personal Access Token from Docker Hub. To generate a new PAT, follow the steps above, under `Docker Repos`.
+	- Setting GitHub Secrets:
+		- At the top bar of GitHub repo, you will click on `Actions`, look at the far left side bar, then go down until you find `Secrets and variables`. Once found, click it and select `Actions`. Under the Actions section, you are able to add repo secrets
+		- For rep secrets, click the green button that says `New repository secret`, give it a name (such as "DOCKERHUB_TOKEN"), then enter in necessary info. If it's the token, then take the Docker Hub PAT password, paste it in, and done. If it's the username, then enter the username necessary for correct functioning.
 - **CI with GitHub Actions**
 	- 
 - **How to Test and Validate**
