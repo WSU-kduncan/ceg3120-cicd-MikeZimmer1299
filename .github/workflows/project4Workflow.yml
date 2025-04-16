@@ -8,7 +8,7 @@ env:
 jobs:
   build_and_push:
     name: Push Docker image to Docker Hub
-    runs-on: node:18-bullseye
+    runs-on: ubuntu-latest
     steps:
       - name: If login fails, files can be viewed
         uses: actions/checkout@v3
