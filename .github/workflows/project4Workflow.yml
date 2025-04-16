@@ -22,5 +22,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME}}/mjzimmer121999/zimmer-ceg3120:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mjzimmer121999/zimmer-ceg3120:latest
 #          platforms: linux/amd64, linux/arm64
