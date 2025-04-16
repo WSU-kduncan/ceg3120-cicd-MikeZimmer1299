@@ -21,5 +21,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           repository: ${{ env.DOCKER_HUB_REPO }}
+	  push: true
           tag-with-ref: ${{ secrets.DOCKERHUB_USERNAME}}/${{ env.DOCKER_HUB_REPO }}:latest
 #          platforms: linux/amd64, linux/arm64
