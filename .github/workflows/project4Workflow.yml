@@ -20,7 +20,7 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v3
         with:
-          repository: ${{ mjzimmer121999/zimmer-ceg3120 }}
+          repository: mjzimmer121999/zimmer-ceg3120
 	  push: true
-          tag-with-ref: ${{ secrets.DOCKERHUB_USERNAME}}/${{ mjzimmer121999/zimmer-ceg3120 }}:latest
+          tag-with-ref: ${{ secrets.DOCKERHUB_USERNAME}}/mjzimmer121999/zimmer-ceg3120:latest
 #          platforms: linux/amd64, linux/arm64
