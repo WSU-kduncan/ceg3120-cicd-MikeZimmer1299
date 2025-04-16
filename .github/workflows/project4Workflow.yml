@@ -3,6 +3,8 @@ on:
   push:
     branches: main
     #workflows-dispatch:
+    tags:
+      - "v*.*.*"
 env:
   DOCKER_HUB_REPO: mjzimmer121999/zimmer-ceg3120
 jobs:
