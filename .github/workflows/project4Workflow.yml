@@ -1,4 +1,4 @@
-name: Project-4-Workflow
+ame: Project-4-Workflow
 on:
   push:
     branches: main
@@ -20,6 +20,7 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v3
         with:
+	  context: .
 	  push: true
           tag-with-ref: ${{ secrets.DOCKERHUB_USERNAME}}/mjzimmer121999/zimmer-ceg3120:latest
 #          platforms: linux/amd64, linux/arm64
