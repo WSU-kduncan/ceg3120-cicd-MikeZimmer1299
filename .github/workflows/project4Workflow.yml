@@ -1,4 +1,4 @@
-ame: Project-4-Workflow
+name: Project-4-Workflow
 on:
   push:
     branches: main
