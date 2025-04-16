@@ -3,8 +3,8 @@ on:
   push:
     branches: main
     #workflows-dispatch:
-    tags:
-      - "v*.*.*"
+    #tags:
+    #  - "v*.*.*"
 env:
   DOCKER_HUB_REPO: mjzimmer121999/zimmer-ceg3120
 jobs:
@@ -24,5 +24,5 @@ jobs:
         with:
           context: .
           #platforms: linux/amd64, linux/arm64
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/zimmer-ceg3120:latest
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mjzimmer121999/zimmer-ceg3120:latest
