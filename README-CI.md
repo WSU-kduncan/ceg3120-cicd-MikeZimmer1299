@@ -64,7 +64,14 @@
 		- At the top bar of GitHub repo, you will click on `Actions`, look at the far left side bar, then go down until you find `Secrets and variables`. Once found, click it and select `Actions`. Under the Actions section, you are able to add repo secrets
 		- For rep secrets, click the green button that says `New repository secret`, give it a name (such as "DOCKERHUB_TOKEN"), then enter in necessary info. If it's the token, then take the Docker Hub PAT password, paste it in, and done. If it's the username, then enter the username necessary for correct functioning.
 - **CI with GitHub Actions**
-	- 
+	- The workflow currently works on `git push` commands to main branch. When it runs (found under `build_and_push`), it first chooses the type of OS (`ubuntu-latest`) to run the image off of. Once it registers the OS, it will go through the following steps:
+		- It will complete `actions/checkout@v3` which prints out 
+		- It will login to Docker Hub next, using the `secrets` from GitHub
+			- Secrets for username and password are: `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`
+		- When successfully logged in, it will build the requested image and push it to Docker Hub
+	- To change when these actions are run, you must change the information found under `on:` in the workflow. Currently, the workflow runs every time there is a `push` to `branch main`. You are able to change it from running on `push` to another branch as needed, or even change it to another action, such as `delete`
+	- [Here is the link to the workflow](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/.github/workflows/project4Workflow.yml)
+	- **TIP:** In the `tags` section under `with`, DO NOT unintentionally add the username for the Docker Hub repo twice
 - **How to Test and Validate**
 	- 
 
