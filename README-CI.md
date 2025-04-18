@@ -71,11 +71,23 @@
 		- When successfully logged in, it will build the requested image and push it to Docker Hub
 	- To change when these actions are run, you must change the information found under `on:` in the workflow. Currently, the workflow runs every time there is a `push` to `branch main`. You are able to change it from running on `push` to another branch as needed, or even change it to another action, such as `delete`
 	- [Here is the link to the workflow](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/.github/workflows/project4Workflow.yml)
-	- **TIP:** In the `tags` section under `with`, DO NOT unintentionally add the username for the Docker Hub repo twice
-- **How to Test and Validate**
-	- 
+	- **TIP:** In the `tags` section under `with`, DO NOT unintentionally add the username for the Docker Hub repo twice. **ALSO** don't forget to make sure you don't forget all necessary variables. This has been the root of many an issue
+- **Test and Validate**
+	- To properly test if the workflow worked, GitHub Actions will state whether it was successful or failed. If it says it failed, it didn't work. If it said it was successful, then you must check your Docker Hub repo. Docker Hub repo will show whether or not there was a successful push. If the push was successful, it will state "Last pushed *period of time* ago."
+	- Easiest way to verify the image works in a new container is to create a new container with the updated image. Once done, go to the URL of the angular application. If you gain access to the website, it works.
 
-# Resources Found
+# Description and Diagram
+	- The goal of this project is to teach by application the uses of workflows through GitHub Actions. In doing so, the project takes the Dockerfile from the GitHub repo, builds it, then pushes it to the desired Docker Hub listed in the Dockerfile.
+	- Tools used in the project:
+		- GitHub Actions
+			- In this project, the Action is to build the Dockerfile image and push it to the user's Docker Hub repo. If any changes were made to the Dockerfile, it will build the updated image and push it to Docker Hub, updating the image that is able to be pulled to make a container.
+		- Dockerfile
+			- The Dockerfile is used to create an image for a new container. The Dockerfile sets up an Angular website, using Node.js, version `18-bullseye`. It changes the container's working directly, copies the application data to the desired folder in the container, then installs `npm` and `@angular/cli`. The Dockerfile exposes the desired port, then runs the command `ng serve --host 0.0.0.0` to allow access to the website through the web application.
+		- Docker Hub
+			- Docker Hub is where the Dockerfile image is able to be downloaded from to create or update containers.
+	- **Diagram**
+		- ![Diagram](images/Diagram.png)
+## Resources Found and Used
 - [Help Understanding "sh -c" in Docker commands](https://docs.docker.com/reference/cli/docker/container/exec/)
 	- Explains `-w`/ `--workdir`
 - [Running Containers Info](https://docs.docker.com/engine/containers/run/)
@@ -84,3 +96,5 @@
 	- Explains the ways to bind mounts. In my case, it gave explanation to `-v` for volume options
 - [Writing a Dockerfile](https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker)
 	- Explained the necessary parameters required inside a Dockerfile for it to properly function
+- [Jon Wasky](https://github.com/Wamski)
+	- Helped realize a future issue as a Mac user, requiring the use of `docker/setup-qemu-action@v3` and `platforms: linux/amd64, linux/arm64` to allow use on both amd and arm based systems.
