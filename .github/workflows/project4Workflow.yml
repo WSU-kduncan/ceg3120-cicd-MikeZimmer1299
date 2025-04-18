@@ -19,6 +19,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - QEMU setup
+        uses: docker/setup-qemu-action@v3
       - name: Push to Docker Hub
         uses: docker/build-push-action@v6
         with:
