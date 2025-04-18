@@ -1,5 +1,5 @@
 # Overview
-- 
+- Project 4 teaches the basics of combining GitHub Actions and Docker Hub, along with teaching the basic uses of Docker as a tool at the user's disposal.
 # The Beginning of Docker Usage
 ## How to Set Up Docker
 - **Installing Docker**
@@ -98,3 +98,5 @@
 	- Explained the necessary parameters required inside a Dockerfile for it to properly function
 - [Jon Wasky](https://github.com/Wamski)
 	- Helped realize a future issue as a Mac user, requiring the use of `docker/setup-qemu-action@v3` and `platforms: linux/amd64, linux/arm64` to allow use on both amd and arm based systems.
+- [Building Multi-Platform Docker Images for ARM64](https://www.blacksmith.sh/blog/building-multi-platform-docker-images-for-arm64-in-github-actions)
+	- This article gives useful information about GitHub Actions and using it to work with ARM64 Docker images, working in tandem with Jon Wasky's advice in what to look for. Explains the use of QEMU and `platforms`
