@@ -12,15 +12,15 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - name: Meta Data
-      - id: meta
-      - uses: docker/metadata-action@v5
-      - with:
-        - images:
-            ${{secrets.DOCKERHUB_USERNAME }}/zimmer-ceg3120
-        - tags:
-            type=semver, pattern={{major}}.{{minor}}
-            type=semver, pattern={{major}}
+      - name: Meta Info
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+              ${{ secrets.DOCKERHUB_USERNAME }}/zimmer-ceg3120
+          tags: |
+              type=semver, pattern={{major}}.{{minor}}
+              type=semver, pattern={{major}}
 
       - name: If login fails, files can be viewed
         uses: actions/checkout@v3
@@ -42,5 +42,5 @@ jobs:
         with:
           context: .
           platforms: linux/amd64, linux/arm64
-          tags: ${{ steps.meta.outputs.tags }}, ${{ secrets.DOCKERHUB_USERNAME }}/zimmer-ceg3120:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/zimmer-ceg3120:latest
           push: true
