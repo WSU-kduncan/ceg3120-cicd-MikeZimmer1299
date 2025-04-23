@@ -42,5 +42,5 @@ jobs:
         with:
           context: .
           #platforms: linux/amd64, linux/arm64
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/zimmer-ceg3120:latest
+          tags: ${{ steps.meta.outputs.tags }}, ${{ secrets.DOCKERHUB_USERNAME }}/zimmer-ceg3120:latest
           push: true
