@@ -97,6 +97,10 @@ Resources:
           FromPort: '22'
           ToPort: '22'
           CidrIp: 172.18.0.64/24 # Internal Instances
+        - IpProtocol: tcp
+          FromPort: '1'
+          ToPort: '65535'
+          CidrIp: 0.0.0.0/0
       Tags:
         - Key: ZIMMER-CF-SG
           Value: CEG3120-SG
@@ -154,7 +158,7 @@ Resources:
     DependsOn: AttachGateway
     Properties:
       ImageId: !FindInMap [AWSRegionAMI, !Ref "AWS::Region", HVM64]
-      InstanceType: t2.micro
+      InstanceType: t2.medium
       KeyName: !Ref KeyName
       Tags:
         - Key: Application
@@ -169,6 +173,13 @@ Resources:
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
           PrivateIpAddress: 172.18.0.64 # Change if needed
+      BlockDeviceMappings:
+          - DeviceName: /dev/sda1
+            Ebs:
+              VolumeType: 'gp3'
+              VolumeSize: '30'
+              Iops: 3000
+              DeleteOnTermination: false
       UserData:
         Fn::Base64:
           !Sub |
@@ -181,8 +192,7 @@ Resources:
               apache2 \
               wamerican \
               htop \
-              sl && \
-            hostnamectl set-hostname ZIMMER-CF && \
-            wget -O /home/ubuntu/wordle.sh https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/wordle.sh && \
-            wget -O /var/www/html/index.html https://raw.githubusercontent.com/pattonsgirl/CEG3120/refs/heads/main/Projects/Project2/index.html && \
+              docker.io && \
+            hostnamectl set-hostname ZIMMER-Proj5 && \
+            systemctl start docker && \
             reboot
