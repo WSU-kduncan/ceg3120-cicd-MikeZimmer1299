@@ -1,0 +1,30 @@
+[
+  {
+    "id": "mainTask",
+    "execute-command": "/home/ubuntu/refreshImage.sh",
+    "trigger-rule": {
+      "and": [
+        {
+          "match": {
+            "type": "value",
+            "parameter": {
+              "source": "payload",
+              "name": "repository.repo_name"
+            },
+            "value": "mjzimmer121999/zimmer-ceg3120"
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "parameter": {
+              "source": "payload",
+              "name": "push_data.tag"
+            },
+            "value": "latest"
+          }
+        }
+      ]
+    }
+  }
+]
