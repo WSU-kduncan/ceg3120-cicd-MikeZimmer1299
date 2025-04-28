@@ -98,9 +98,9 @@ Resources:
           ToPort: '22'
           CidrIp: 172.18.0.64/24 # Internal Instances
         - IpProtocol: tcp
-          FromPort: '1'
-          ToPort: '65535'
-          CidrIp: 0.0.0.0/0
+          FromPort: '9000'
+          ToPort: '9000'
+          CidrIp: 0.0.0.0/0 # Webhooks
       Tags:
         - Key: ZIMMER-CF-SG
           Value: CEG3120-SG
@@ -189,7 +189,6 @@ Resources:
               git \
               python3 \
               python3-pip \
-              apache2 \
               wamerican \
               htop \
               docker.io && \
