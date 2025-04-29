@@ -42,14 +42,16 @@
     - Kills the current container running
   - `docker pull mjzimmer121999/zimmer-ceg3120`
     - Pulls the updated container from Docker Hub
-  - `docker run -it -p 8-:4200 --name horror mjzimmer121999/zimmer-ceg3120:latest`
+  - `docker run -d -p 80:4200 --name horror mjzimmer121999/zimmer-ceg3120:latest`
     - Restarts the container with updated configuration
+    - Watch for spelling errors. Spelling has been the thorn in my side for the majority of my issues
 ## Scripting
 - `bash` to kill, pull, and run
   - `docker kill horror`
+  - `docker rm horror`
   - `docker pull mjzimmer121999/zimmer-ceg3120`
   - `docker run -d -p 80:4200 --name horror --restart=always mjzimmer121999/zimmerceg3120:latest`
-    - I have run into problems with running any sort of container, so my container is named `horror`
+    - The `4200` port may need to be changed to `9000`
 - To test it, run the script
   - Do not forget to `chmod` the file to allow it to execute
 - [Bash Script](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/Project5/deployment/refreshImage.sh)
@@ -57,7 +59,6 @@
 - Within the EC2 instance, run the command `sudo apt-install webhook` to install the webhook application
   - To check for successful installation, you can run `webhook -version`
 - The webhook's contents are: `id` (called mainTask for mine), an `execute` command that runs the `bash` script at the file location, and a `trigger-rule`, which watches for specific 
-
 - To test the webhook once configured, you can run `/path/to/webhook -hooks hooks.json -verbose`, then in your browser url, go to `http://localhost:9000/hooks/mainTask` to verify it works
   - The `-verbose` tag allows the user to watch logs as they come in
 - [Definition File](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/Project5/deployment/hooks.json)
@@ -67,7 +68,6 @@
   - Current webhook URL is `http://18.214.111.74:9000/hooks/mainTask`
 - Docker Hub states the webhook will run when "an image is pushed to this repo, your workflows will kick off based on your specified webhooks"
 - To verify the payload worked, your webhook config on Docker Hub has a history tracker, which is found with the 3 vertical dots at the end of the config. If your webhook has a newly created history, it worked.
-
 ## Webhook Config on EC2
 - `webhook.service`
   - `ConditionPathExists=` was changed to direct the service to the desired `hooks.json` in EC2 instance home directory, checking if the file exists before executing the service
@@ -77,7 +77,6 @@
 - Verify working webhook
   - Running the command `journalctl -f -u webhook.service` will be the easiest way, because `journalctl` will not work if a service is not being run
 - [Webhook File](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/Project5/deployment/webhook.service)
-
 # Resources
 - [Tags and Labels Example](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
   - Great example of the format and info needed to correctly get the version tags working
@@ -87,7 +86,5 @@
   - Given to class via Prof. Duncan (best professor)
 - `webhook.service`
   - Information explained in last lecture by Prof. Duncan, greater detail listed in service file section
-- [More Webhook Info from adnanh](https://github.com/adnanh/webhook)
-  - 
 - [Jon Wasky](https://github.com/Wamski)
   - Jon allowed me to pick his brain for troubleshooting issues I have been having. He has also led me in the right direction when I have become stumped (such as with Payload Sender and tags in workflow) by asking questions that don't give the answer but point me in the right direction to find the answer.
