@@ -1,8 +1,6 @@
 name: Project-4-Workflow
 on:
   push:
-    branches: main
-    #workflows-dispatch:
     tags:
       - "v*.*.*"
 env:
