@@ -77,16 +77,16 @@
 	- Easiest way to verify the image works in a new container is to create a new container with the updated image. Once done, go to the URL of the angular application. If you gain access to the website, it works.
 
 # Description and Diagram
-	- The goal of this project is to teach by application the uses of workflows through GitHub Actions. In doing so, the project takes the Dockerfile from the GitHub repo, builds it, then pushes it to the desired Docker Hub listed in the Dockerfile.
-	- Tools used in the project:
-		- GitHub Actions
-			- In this project, the Action is to build the Dockerfile image and push it to the user's Docker Hub repo. If any changes were made to the Dockerfile, it will build the updated image and push it to Docker Hub, updating the image that is able to be pulled to make a container.
-		- Dockerfile
-			- The Dockerfile is used to create an image for a new container. The Dockerfile sets up an Angular website, using Node.js, version `18-bullseye`. It changes the container's working directly, copies the application data to the desired folder in the container, then installs `npm` and `@angular/cli`. The Dockerfile exposes the desired port, then runs the command `ng serve --host 0.0.0.0` to allow access to the website through the web application.
-		- Docker Hub
-			- Docker Hub is where the Dockerfile image is able to be downloaded from to create or update containers.
-	- **Diagram**
-		- ![Diagram](images/Diagram.png)
+  - The goal of this project is to teach by application the uses of workflows through GitHub Actions. In doing so, the project takes the Dockerfile from the GitHub repo, builds it, then pushes it to the desired Docker Hub listed in the Dockerfile.
+  - Tools used in the project:
+    - GitHub Actions
+	  - In this project, the Action is to build the Dockerfile image and push it to the user's Docker Hub repo. If any changes were made to the Dockerfile, it will build the updated image and push it to Docker Hub, updating the image that is able to be pulled to make a container.
+	  - Dockerfile
+	    - The Dockerfile is used to create an image for a new container. The Dockerfile sets up an Angular website, using Node.js, version `18-bullseye`. It changes the container's working directly, copies the application data to the desired folder in the container, then installs `npm` and `@angular/cli`. The Dockerfile exposes the desired port, then runs the command `ng serve --host 0.0.0.0` to allow access to the website through the web application.
+	  - Docker Hub
+	    - Docker Hub is where the Dockerfile image is able to be downloaded from to create or update containers.
+  - **Diagram**
+    - ![Diagram](images/Diagram.png)
 ## Resources Found and Used
 - [Help Understanding "sh -c" in Docker commands](https://docs.docker.com/reference/cli/docker/container/exec/)
 	- Explains `-w`/ `--workdir`
