@@ -1,7 +1,7 @@
 # Overview
 - The goal of the project is to, in great detail, expand user knowledge on how GitHub tags, Actions, and Continuous Deployment are utilized. The Continuous Deployment is utilized via AWS EC2 Instance, where it is running an Angular application. Through GitHub Actions, GitHub updates Docker Hub repository with any changes (notified via version tag), rebuild the new image, then pushes it to Docker Hub. Once Docker Hub receives the update, the EC2 Instance will be notified and pull the updated image via Webhook.
 # Diagram
-![Workflow Diagram](./images/WebhookDiagram.png)
+![Workflow Diagram](~./images/WebhookDiagram.png)
 ## Basic Tag Usage Explained
 - In the repository above where files are shown, there are `main`, `branch`, and `tag`. Click on `tag` to view your tags
   - You may also use the command `git tag` to view your tags from terminal
