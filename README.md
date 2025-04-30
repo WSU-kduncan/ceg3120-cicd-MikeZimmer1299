@@ -4,5 +4,5 @@
 - Project 5 builds on top of the GitHub Action and Docker Hub repo uses, by creating a Webhook set up through Docker Hub and an AWS EC2 instance. Project 5 utilizes a bash script, Webhook definition, and Webhook service.
 
 ### Links
-[Project 4](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/Project4/README-CI.md)
-[Project 5](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/Project5/README-CD.md)
+- [Project 4](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/Project4/README-CI.md)
+- [Project 5](https://github.com/WSU-kduncan/ceg3120-cicd-MikeZimmer1299/blob/main/Project5/README-CD.md)
